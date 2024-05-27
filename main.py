@@ -8,13 +8,15 @@ def get_currencies():
     endpoint =f"v1/currencies?apikey={API_KEY}"
     url = BASE_URL+endpoint
     data = get(url).json()['data']
-    datalist=[]
+
     data = list(data.items())
     data.sort()
     return data
 
 def print_currency(currencies):
+    #currencies is a tuple(str,list)
     for name,currency in currencies:
+
         name = currency['name']
         code = currency['code']
         symbol = currency.get('symbol_native',"")
